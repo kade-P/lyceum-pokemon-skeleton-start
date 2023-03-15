@@ -47,7 +47,6 @@ router.get("/trainer/:name", async (req, res, next) => {
     res.send(trainer);
   } catch (err) {
     console.log(err);
-    console.log("てすと2");
     next(err);
   }
 });
@@ -81,13 +80,13 @@ router.post("/deleteTrainer", async (req, res, next) => {
 router.put(
   "/trainer/:trainerName/pokemon/:pokemonName",
   async (req, res, next) => {
-    console.log("つかまえよう");
     try {
       const { trainerName, pokemonName } = req.params;
       // const pokemon = await findPokemon(pokemonName);
       const trainer = await findTrainer(trainerName);
       // TODO: 削除系 API エンドポイントを利用しないかぎりポケモンは保持する
-      trainer.pokemons.push({ id: "", nickname: "", name: pokemonName })
+      const id = trainer.pokemons.length + 1
+      trainer.pokemons.push({ id: id, nickname: "太郎", name: pokemonName })
       // const result = await upsertTrainer(trainerName, { pokemons: [pokemon] });
       const result = await upsertTrainer(trainerName, trainer);
       res.status(result["$metadata"].httpStatusCode).send(result);
