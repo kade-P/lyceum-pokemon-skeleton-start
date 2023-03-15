@@ -56,6 +56,11 @@ const deleteTrainer = async () => {
   if (!response.ok) return;
   router.push("/");
 };
+
+const retunMain = async () => {
+  router.push("/");
+};
+
 </script>
 
 <template>
@@ -65,6 +70,7 @@ const deleteTrainer = async () => {
     </p>
     <p>
       <GamifyButton @click="displayDialog = true">帰郷</GamifyButton>
+      <GamifyButton @click="retunMain()">休暇</GamifyButton>
     </p>
     <p>
       在庫
