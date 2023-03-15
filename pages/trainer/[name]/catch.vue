@@ -9,25 +9,29 @@ const { data: pokemons, refresh } = await useFetch(
     `https://pokeapi.co/api/v2/pokemon?offset=0&limit=50`
 );
 
+const test = () => {console.log("test")}
+
 const catchTargetPokemon = async (pokemon) => {
+    console.log("つかまえる");
     const trainer = route.params.name;
+    console.log(trainer)
     const response = await fetch(`${config.backendOrigin}/api/trainer/${route.params.name}/pokemon/${pokemon}`,
     {method:"PUT",
 });
     if (!response.ok) return;
-    router.push(`/trainer/${router.params.name}`);
+    router.push(`/trainer/${route.params.name}`);
 };
 
 </script>
 
 <template>
-    {{ route.params.name }}
+    <!-- {{ targetPokemon }} -->
     <p>
       <GamifyList>
         <GamifyItem v-for="pokemon in pokemons.results">
           <span>{{ pokemon.name }}</span>
           <span>
-            <GamifyButton @click="displayDialog=true ; targetPokemon=pokemon.name ">捕獲</GamifyButton>
+            <GamifyButton @click="displayDialog=true ; targetPokemon=pokemon.name ; test()">捕獲</GamifyButton>
           </span>
         </GamifyItem>
       </GamifyList>
@@ -40,7 +44,7 @@ const catchTargetPokemon = async (pokemon) => {
     >
       <GamifyList :border="false" direction="horizon">
         <GamifyItem>
-          <GamifyButton @click="displayDialog=false; targetPokemon=''">いいえ</GamifyButton>
+          <GamifyButton @click="displayDialog=false; targetPokemon=''; test()">いいえ</GamifyButton>
         </GamifyItem>
         <GamifyItem>
           <GamifyButton @click="displayDialog=false; catchTargetPokemon(targetPokemon)">はい</GamifyButton>

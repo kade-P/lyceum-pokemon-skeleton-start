@@ -58,7 +58,7 @@ const deleteTrainer = async () => {
 
   </div>
 
-  <GamifyDialog v-if="displayDialog == true" title="確認" :description="`夢を諦め帰郷するのですね？この操作は取り消せません`">
+  <GamifyDialog v-if="displayDialog == true" title="確認" :description="`帰郷するのですね？この操作は取り消せません`">
     <GamifyList :border="false" direction="horizon">
       <GamifyItem>
         <GamifyButton @click="displayDialog = false">いいえ</GamifyButton>

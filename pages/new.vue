@@ -34,9 +34,9 @@ const addTrainer = async () => {
     </form>
   </div>
 
-  {{ displayDialog }}
+  <!-- {{ displayDialog }}
   {{ trainerName.length }}
-  {{ sentence }}
+  {{ sentence }} -->
 
   <GamifyDialog
       v-if="displayDialog==true&&trainerName.length>0"
